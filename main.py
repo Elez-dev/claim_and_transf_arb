@@ -47,8 +47,6 @@ def transfer(web3, privatekey, transfer_address):
         if count_ > 30:
             print(f'Количество токенов - {amount} на адресе {address_wallet}')
             return 0
-    amount = contract.functions.balanceOf(address_wallet).call()
-    print(web3.eth.gasPrice)
     try:
         contract_txn = contract.functions.transfer(
             Web3.toChecksumAddress(transfer_address), amount
