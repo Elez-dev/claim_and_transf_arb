@@ -15,13 +15,13 @@ def mint(web3, privatekey):
     address_wallet = account.address
     contract = web3.eth.contract(address=adr_claim, abi=ABI_claim)
     try:
-        contract.functions.claim().buildTransaction({
+        a = contract.functions.claim().buildTransaction({
             'from': address_wallet,
             'gas': gasLimit,
             'gasPrice': Web3.toWei(gasPrice, 'gwei'),
             'nonce': web3.eth.getTransactionCount(address_wallet)
             })
-        signed_txn = web3.eth.account.sign_transaction(contract, private_key=privatekey)
+        signed_txn = web3.eth.account.sign_transaction(a, private_key=privatekey)
         tx_hash = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
         print(f'\n>>> https://arbiscan.io/tx/{web3.toHex(tx_hash)}', flush=True)
         return True
