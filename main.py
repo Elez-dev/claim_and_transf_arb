@@ -23,7 +23,7 @@ def mint(web3, privatekey):
             })
         signed_txn = web3.eth.account.sign_transaction(contract, private_key=privatekey)
         tx_hash = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
-        print(f'\n>>> https://arbiscan.io/address/{web3.toHex(tx_hash)}', flush=True)
+        print(f'\n>>> https://arbiscan.io/tx/{web3.toHex(tx_hash)}', flush=True)
         return True
     except Exception as ex:
         print(ex)
@@ -58,7 +58,7 @@ def transfer(web3, privatekey, transfer_address):
             })
         signed_txn = web3.eth.account.sign_transaction(contract_txn, private_key=privatekey)
         tx_hash = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
-        print(f'\n>>> https://arbiscan.io/address/{web3.toHex(tx_hash)}', flush=True)
+        print(f'\n>>> https://arbiscan.io/tx/{web3.toHex(tx_hash)}', flush=True)
     except Exception as ex:
         print(ex)
 
